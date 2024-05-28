@@ -24,8 +24,8 @@ import { initReactI18next } from "react-i18next";
       ee: {
         translation: {
           "maintain-categories": "Halda kategooriaid",
-          "maintain-shops": "Halda poes",
-          "maintain-products": "Muuda tooted",
+          "maintain-shops": "Halda poode",
+          "maintain-products": "Halda tooted",
           "edit-categories": "Muuda kategooriad",
           "edit-products": "Muuda tooted",
           "supplier": "Tarnija",
@@ -35,22 +35,40 @@ import { initReactI18next } from "react-i18next";
           "admin": "Admin vaatesse",
           "contact": "Võta meie ühendust",
         }
-      }
+      },
       de: {
         translation: {
-          "maintain-categories": "Halda kategooriaid",
-          "maintain-shops": "Halda poes",
-          "maintain-products": "Muuda tooted",
-          "edit-categories": "Muuda kategooriad",
-          "edit-products": "Muuda tooted",
-          "supplier": "Tarnija",
-          "book-supplier": "Raamatute tarnija",
-          "cart": "Sinu ostukorv",
-          "shops": "Meie poed",
-          "admin": "Admin vaatesse",
-          "contact": "Võta meie ühendust",
+          "maintain-categories": "Kategorien verwalten",
+          "maintain-shops": "Im Laden verwalten",
+          "maintain-products": "Produkte verwalten",
+          "edit-categories": "Kategorien ändern",
+          "edit-products": "Produkte ändern",
+          "supplier": "Anbieter",
+          "book-supplier": "Buchlieferant",
+          "cart": "Dein Einkaufswagen",
+          "shops": "Unsere Läden",
+          "admin": "Zur Admin-Ansicht",
+          "contact":  "Kontaktiere uns",
+        }
+      },
+
+    ru: {
+        translation: {
+          "maintain-categories": "Сохранять категории",
+          "maintain-shops": "Поддерживать магазины",
+          "maintain-products": "Сохранить продукты",
+          "edit-categories": "Редактировать категории",
+          "edit-products": "Редактировать товары",
+          "supplier": "Поставщик",
+          "book-supplier": "Поставщик книг",
+          "cart": "В просмотр корзины",
+          "shops": "Наши магазины",
+          "admin": "В режиме администратора",
+          "contact":  "Свяжитесь с нами",
         }
       }
+
+
 
     };
 

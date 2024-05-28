@@ -18,6 +18,16 @@ function NavigationBar() {
     localStorage.setItem("language", "en");
   }
 
+  const changeLangDE = () => {
+    i18n.changeLanguage("de");
+    localStorage.setItem("language", "de");
+  }
+
+  const changeLangRU = () => {
+    i18n.changeLanguage("ru");
+    localStorage.setItem("language", "ru");
+  }
+
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
@@ -34,6 +44,9 @@ function NavigationBar() {
           <Nav>
             <Nav.Link onClick={changeLangEE}>Eesti</Nav.Link>
             <Nav.Link onClick={changeLangEN}>English</Nav.Link>
+            <Nav.Link onClick={changeLangDE}>Deutsch</Nav.Link>
+            <Nav.Link onClick={changeLangRU}>Hа русском</Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

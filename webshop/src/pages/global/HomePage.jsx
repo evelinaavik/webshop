@@ -2,6 +2,7 @@ import React from 'react'
 import productsJSON from "../../data/products.json"
 import cartJSON from "../../data/cart.json"
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 function HomePage() {
   const [products, setProducts] = useState (productsJSON.slice());
@@ -17,7 +18,13 @@ function HomePage() {
 
   const toCart = (product) => {
     cartJSON.push(product);
+
+    toast.success("Toode on lisatud ostukorvi!", {
+      position: "bottom-right"
+    });
   }
+
+
 
   return (
     <div>
@@ -31,7 +38,14 @@ function HomePage() {
           <div>{product.title}</div>
           <div>{product.price}</div>
           <button onClick={() => toCart(product)}>Add to cart</button>
+          
+          <ToastContainer 
+        position="bottom-right"
+        autoClose={4000}    // sekundid
+        theme="dark"
+       /> 
         </div>
+        
       )} 
     </div>
   )

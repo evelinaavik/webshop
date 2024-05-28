@@ -26,14 +26,14 @@ function Cart() {
     return sum.toFixed(2);   
   }
   
-  const reset = () => {
-    setProducts(cartJSON.slice())
-  }
+  // const reset = () => {
+  //   setProducts(cartJSON.slice())
+  // }
 
   return (
     <div><br /> Sinu ostukorv <br /><br />
         Toodete kogus : {products.length}  tk <br />
-        <button onClick={reset}>Tooted reset</button>
+        {/* <button onClick={reset}>Tooted reset</button> */}
         <div>Toodete hind kokku: {addUp()}</div>
         {products.length > 0 &&  <button onClick={empty}>Tühjenda ostukorv</button> } <br /><br />
         {products.map ((product, index) =>
