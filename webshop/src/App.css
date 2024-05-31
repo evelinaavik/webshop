@@ -1,5 +1,103 @@
 .App {
   text-align: center;
+  /* background-color: #ebebeb; */
+  background-color: #eaebee ;
+  font-family: "Libre Baskerville", serif;
+}
+
+/* 
+.libre-baskerville-regular {
+  font-family: 
+  font-weight: 400;
+  font-style: normal;
+} */
+
+
+.map {
+  height: 300px;
+  margin: 5%;
+  border-radius: 5px;
+
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-bottom: 70px;
+}
+
+.product {
+  /* border: 1px solid gray; */
+  padding: 5px;
+  margin: 5%;
+  border-radius: 5px;
+  background-color: white;
+  
+}
+
+.product:hover .picture {
+ transform: scale(1.1);
+ transition: 0.5s;  
+
+}
+
+.picture {
+  width:100px;
+  height: 100px;
+  transition: 1.5s;  
+  padding: 15px;
+
+}
+
+.title {
+  height: 50px;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.1;
+  padding-top: 15px;
+}
+
+.product:hover .title {
+  font-size: medium;
+ }
+
+
+.tooted {
+  margin-left: 20%; 
+  margin-right: 20%; 
+}
+
+.price {
+  padding: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+.email {
+  margin-bottom: 15px;
 }
 
 
+.footer {
+  /* background-image: url("lines.png"); */
+  background-color: white;
+  min-height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 20px;
+  font-size: 19px;
+  padding-bottom: 40px;
+}
+
+.cartButton {
+  margin-bottom: 15px;
+}
+
+
+.item {
+  height:450px;
+  object-fit: cover;
+  border: solid white; 
+  border-radius: 1%;
+
+}

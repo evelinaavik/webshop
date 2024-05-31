@@ -15,10 +15,14 @@ import MaintainShops from './pages/admin/MaintainShops';
 import EditCategories from './pages/admin/EditCategories';
 import AdminHome from './pages/admin/AdminHome';
 import AddProduct from './pages/admin/AddProduct';
+import Footer from './components/Footer';
+import CarouselProducts from './components/CarouselProducts';
+
 
 function App() {  return (
     <div className="App">
       <NavigationBar/>
+       <CarouselProducts/>
         <Routes>
           <Route path='' element={<HomePage/>}></Route>
           <Route path='contact' element={<ContactUs/>}></Route>
@@ -36,9 +40,15 @@ function App() {  return (
           <Route path='login' element={<Login/>}></Route>
           <Route path='signup' element={<Signup/>}></Route>
 
+          <Route path='Footer' element={<Footer/>}></Route>
+          <Route path='CarouselProducts' element={<CarouselProducts/>}></Route>
+
+          
+
           <Route path='*' element={<NotFound/>}></Route>
 
         </Routes>
+        <Footer></Footer>
     </div>
   );
 }
