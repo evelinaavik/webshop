@@ -5,6 +5,11 @@ import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import {Button} from '@mui/material';
 import Button1 from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
+import OffCanvas from '../../components/OffCanvas';
+import CarouselProducts from '../../components/CarouselProducts';
+
+
 
 
 function HomePage() {
@@ -57,32 +62,37 @@ const filterJewelery = () => {
   }
 
   return (
+   <div>
+      <CarouselProducts/><hr /> <br />
     <div className="tooted">
-      <br /><br />
-      
-   
-      
-    
-
+     
       <div><b>OUR PRODUCTS:</b></div><br />
-      <Button onClick={reset} variant="contained">See all products</Button><br /> <br />
+     
+      <OffCanvas/> <br /><br />
+ 
        <Button onClick={filterMensClothing}>Men's clothing</Button>       
        <Button onClick={filterWomensClothing}>Women's clothing</Button>
        <Button onClick={filterElectronics}>Electronics</Button>
        <Button onClick={filterJewelery}>Jewelery</Button><br />   
+
        <Button onClick={sortFromLow} variant="outlined">Sort by price from low to high</Button>
        <Button onClick={sortFromHigh} variant="outlined">Sort by price from high to low</Button>
-       <Button onClick={sortAZ} variant="outlined">Sort by product name</Button>
+       <Button onClick={sortAZ} variant="outlined">Sort by product name</Button> <br /><br />
+       <Button onClick={reset} variant="contained">See all products</Button><br /> <br />
        <br /><br />
        <div><b> Products on page: {products.length} items</b></div>
        <div className="products">
-          {products.map(product => 
+          {products.map((product, index) => 
             <div key={product.id} className="product">
               <img className="picture" style={{width: "100px"}} src={product.image} alt=""></img>
               <div className="title">{product.title.length > 20 ? product.title.substring(0,25) + "..." : product.title}</div>
               <div className="price">{product.price.toFixed(2)} eur</div>
-              <Button1 onClick={() => toCart(product)} className="cartButton" variant="outline-info">Add to cart</Button1>
+              <Button1 onClick={() => toCart(product)} className="cartButton" variant="outline-info">Add to cart</Button1><br />
               
+
+              <Link to={"global/SingleProduct/" + index }> Product details </Link> 
+                
+
               <ToastContainer 
             position="bottom-right"
             autoClose={3000}    
@@ -93,7 +103,7 @@ const filterJewelery = () => {
       )} 
       </div>
       <div className="bottom-bar"> </div>
-    </div>
+    </div></div>
   )
 }
 

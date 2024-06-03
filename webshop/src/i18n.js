@@ -19,6 +19,7 @@ import { initReactI18next } from "react-i18next";
           "shops": "Our Shops",
           "admin": "To admin view",
           "contact": "Contact us",
+          "products": "Our products"
         }
       },
       ee: {
@@ -33,7 +34,8 @@ import { initReactI18next } from "react-i18next";
           "cart": "Sinu ostukorv",
           "shops": "Meie poed",
           "admin": "Admin vaatesse",
-          "contact": "Võta meie ühendust",
+          "contact": "Võta meiega ühendust",
+          "products": "Meie tooted"
         }
       },
       de: {
@@ -49,6 +51,7 @@ import { initReactI18next } from "react-i18next";
           "shops": "Unsere Läden",
           "admin": "Zur Admin-Ansicht",
           "contact":  "Kontaktiere uns",
+          "products": "Our products"
         }
       },
 

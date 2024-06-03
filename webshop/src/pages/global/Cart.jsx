@@ -31,7 +31,7 @@ function Cart() {
   // }
 
   return (
-    <div><br /> Sinu ostukorv <br /><br />
+    <div><br /> <b>Sinu ostukorv</b>  <br /><br />
         Toodete kogus : {products.length}  tk <br />
         {/* <button onClick={reset}>Tooted reset</button> */}
         <div>Toodete hind kokku: {addUp()}</div>
@@ -46,6 +46,7 @@ function Cart() {
             </div>
         )} 
         {products.length === 0 && <Link to='/'>Ostukorv on tühi. Mine avalehele</Link> }
+        <br /> <br /><br />
     </div>
   )
 }

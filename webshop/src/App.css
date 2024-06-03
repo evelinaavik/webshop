@@ -97,7 +97,7 @@
 .item {
   height:450px;
   object-fit: cover;
-  border: solid white; 
-  border-radius: 1%;
+  margin-top: 3px;
+
 
 }

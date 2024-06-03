@@ -17,12 +17,15 @@ import AdminHome from './pages/admin/AdminHome';
 import AddProduct from './pages/admin/AddProduct';
 import Footer from './components/Footer';
 import CarouselProducts from './components/CarouselProducts';
+import ModalStart from './components/ModalStart';
 
 
 function App() {  return (
     <div className="App">
+      <ModalStart/>
       <NavigationBar/>
-       <CarouselProducts/>
+       {/* <CarouselProducts/><hr /> <br /> */}
+      
         <Routes>
           <Route path='' element={<HomePage/>}></Route>
           <Route path='contact' element={<ContactUs/>}></Route>
@@ -37,13 +40,13 @@ function App() {  return (
           <Route path='admin/edit-categories' element={<EditCategories/>}></Route>
           <Route path='admin/maintain-shops' element={<MaintainShops/>}></Route>
 
+          <Route path='global/SingleProduct/:index' element={<SingleProduct/>}></Route>
+
           <Route path='login' element={<Login/>}></Route>
           <Route path='signup' element={<Signup/>}></Route>
 
           <Route path='Footer' element={<Footer/>}></Route>
           <Route path='CarouselProducts' element={<CarouselProducts/>}></Route>
-
-          
 
           <Route path='*' element={<NotFound/>}></Route>
 
