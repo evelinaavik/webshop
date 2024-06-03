@@ -39,8 +39,6 @@ function FilterProducts() {
         </Offcanvas.Header>
         <Offcanvas.Body> Siins võiks olla toodete filtreerimise nupud <br /><br />
 
-         
-          
        <Button onClick={sortFromLow} variant="outline-info">Sort by price from low to high</Button><br />
        <Button onClick={sortFromHigh} variant="outline-info">Sort by price from high to low</Button><br />
        <Button onClick={sortAZ} variant="outline-info">Sort by product name</Button>
@@ -49,17 +47,10 @@ function FilterProducts() {
           {products.map(product => 
             <div key={product.id} >
               <div>{product.title.length > 10 ? product.title.substring(0,15) + "..." : product.title}
-              {product.price.toFixed(2)} eur</div>
-         
-              
-        
-      </div>
-  
-        
+              {product.price.toFixed(2)} eur</div>       
+      </div>       
       )} 
-      </div>
-
-           
+      </div>         
         </Offcanvas.Body>
       </Offcanvas>
     </>

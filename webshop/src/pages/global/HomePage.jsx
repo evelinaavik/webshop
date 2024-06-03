@@ -88,11 +88,9 @@ const filterJewelery = () => {
               <div className="title">{product.title.length > 20 ? product.title.substring(0,25) + "..." : product.title}</div>
               <div className="price">{product.price.toFixed(2)} eur</div>
               <Button1 onClick={() => toCart(product)} className="cartButton" variant="outline-info">Add to cart</Button1><br />
-              
-
+        
               <Link to={"global/SingleProduct/" + index }> Product details </Link> 
-                
-
+              
               <ToastContainer 
             position="bottom-right"
             autoClose={3000}    
