@@ -1,23 +1,27 @@
 import React, { useState } from 'react'
-import cartJSON from "../../data/cart.json"
+// import cartJSON from "../../data/cart.json"
 import { Link } from 'react-router-dom';
+import styles from "../../css/Cart.module.css";
 
-function Cart() {
-  const [products, setProducts] = useState(cartJSON.slice());
+function Cart() {                   // 1. 2.
+  const [products, setProducts] = useState(JSON.parse(localStorage.getItem("cart")) || []);
 
-  function del(product) {
-    cartJSON.splice(product, 1);
-    setProducts(cartJSON.slice());
+  function del(index) {
+    products.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(products));
+    setProducts(products.slice());
   }
 
   function add(product) {
-      cartJSON.push(product);
-    setProducts(cartJSON.slice())
+    products.push(product); // 3.
+    localStorage.setItem("cart", JSON.stringify(products)); // 4. 5.   
+    setProducts(products.slice())  // HTMLI uuedamine
   }
 
   function empty(){
-    cartJSON.splice(0)     // kui ei pane (0,100) teist nr, on lõpmatu kogus, mida kustutab
-    setProducts(cartJSON.slice(0))
+    products.splice(0)    
+    localStorage.setItem("cart", JSON.stringify(products)); // kui ei pane (0,100) teist nr, on lõpmatu kogus, mida kustutab
+    setProducts(products.slice(0))
   }
 
   function addUp(){
@@ -37,12 +41,12 @@ function Cart() {
         <div>Toodete hind kokku: {addUp()}</div>
         {products.length > 0 &&  <button onClick={empty}>Tühjenda ostukorv</button> } <br /><br />
         {products.map ((product, index) =>
-            <div key={index}>
-                  <div>{product.title}
-                     {product.price}
-                    <button onClick={() => del(index)}>x</button>
-                    <button onClick={() => add(product)}>Add prduct</button>
-                 </div>    
+            <div key={index} className={styles.product}>
+              <img className={styles.picture} src={product.image} alt="" />
+              <div className={styles.title}> {product.title} </div>
+              <div className={styles.price}>  {product.price} </div>
+              <button className={styles.button} onClick={() => del(index)}>x</button>
+              <button className={styles.button} onClick={() => add(product)}>Add prduct</button>    
             </div>
         )} 
         {products.length === 0 && <Link to='/'>Ostukorv on tühi. Mine avalehele</Link> }

@@ -1,6 +1,6 @@
 import React from 'react'
 import productsJSON from "../../data/products.json"
-import cartJSON from "../../data/cart.json"
+// import cartJSON from "../../data/cart.json"
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import {Button} from '@mui/material';
@@ -8,9 +8,10 @@ import Button1 from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import OffCanvas from '../../components/OffCanvas';
 import CarouselProducts from '../../components/CarouselProducts';
-
-
-
+// import "../../css/HomePage.css";  // sellisena rakendub tervele rakendusele 
+import styles from "../../css/HomePage.module.css";
+// from "../" --> läheb kausta võtta ülespoole
+// from "react" --> võtab node_module-st React kaustast
 
 function HomePage() {
   const [products, setProducts] = useState (productsJSON.slice());
@@ -54,7 +55,18 @@ const filterJewelery = () => {
 }
 
   const toCart = (product) => {
-    cartJSON.push(product);
+    // cartJSON.push(product);
+    const cartLS = JSON.parse(localStorage.getItem("cart")) || [];   // JSON.parse nö "" mahavõtmine
+    cartLS.push(product);
+    localStorage.setItem("cart", JSON.stringify(cartLS));   
+
+    // ostukorvi lisamine localStoragesse
+    // localStorage-sse ARRAY/LIST/MASSIIV panekul on vaja viite sammu:
+  // 1. võtta localStorage-st (localStorage.getItem("VÕTI"))
+  // 2. võtta jutumärgid maha (JSON.parse())
+  // 3. lisada üks juurde (.push())
+  // 4. panna jutumärgid tagasi (JSON.stringify())
+  // 5. panna localStorage-sse tagasi (localStorage.setItem("VÕTI", "UUS"))
 
     toast.info("Toode on lisatud ostukorvi!", {
       position: "bottom-right"
@@ -81,12 +93,13 @@ const filterJewelery = () => {
        <Button onClick={reset} variant="contained">See all products</Button><br /> <br />
        <br /><br />
        <div><b> Products on page: {products.length} items</b></div>
-       <div className="products">
+       
+       <div className={styles.products}>
           {products.map((product, index) => 
-            <div key={product.id} className="product">
-              <img className="picture" style={{width: "100px"}} src={product.image} alt=""></img>
-              <div className="title">{product.title.length > 20 ? product.title.substring(0,25) + "..." : product.title}</div>
-              <div className="price">{product.price.toFixed(2)} eur</div>
+            <div key={product.id} className={styles.product}>
+              <img className={styles.picture} src={product.image} alt=""></img>
+              <div className={styles.title}>{product.title.length > 20 ? product.title.substring(0,25) + "..." : product.title}</div>
+              <div className={styles.price}>{product.price.toFixed(2)} eur</div>
               <Button1 onClick={() => toCart(product)} className="cartButton" variant="outline-info">Add to cart</Button1><br />
         
               <Link to={"global/SingleProduct/" + index }> Product details </Link> 
@@ -97,7 +110,6 @@ const filterJewelery = () => {
             theme="colored"
           /> 
            </div>
-        
       )} 
       </div>
       <div className="bottom-bar"> </div>
@@ -106,3 +118,5 @@ const filterJewelery = () => {
 }
 
 export default HomePage
+
+// storage / cookies

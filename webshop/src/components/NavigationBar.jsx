@@ -10,7 +10,7 @@ function NavigationBar() {
 
   const changeLangEE = () => {
     i18n.changeLanguage("ee");
-    localStorage.setItem("language", "ee");
+    localStorage.setItem("language", "ee");  // valiku korral kustutab vana/default väärtuse ära, jätab ee
   }
 
   const changeLangEN = () => {

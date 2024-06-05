@@ -1,0 +1,25 @@
+.product {
+    display: flex;
+    justify-content: space-between; 
+    margin: 0 10%;
+    border-bottom: 1px solid lightgray;
+    padding: 10px 0;
+    background-color: white;
+}
+
+.picture {
+    height: 100px;
+    width: auto;
+}
+
+.title {
+width: 150px;
+}
+
+.price {
+width: 60px;
+}
+
+.button {
+
+}
