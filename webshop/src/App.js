@@ -37,7 +37,7 @@ function App() {  return (
 
           <Route path='admin' element={<AdminHome/>}></Route>
           <Route path='admin/add-product' element={<AddProduct/>}></Route>
-          <Route path='admin/edit-product/:index' element={<EditProduct/>}></Route>
+          <Route path='admin/edit-product/:id' element={<EditProduct/>}></Route>
           <Route path='admin/maintain-products' element={<MaintainProducts/>}></Route>
           <Route path='admin/edit-categories' element={<EditCategories/>}></Route>
           <Route path='admin/maintain-shops' element={<MaintainShops/>}></Route>
@@ -45,7 +45,7 @@ function App() {  return (
           <Route path='admin/book-supplier' element={<BookSupplier/>}></Route>
           <Route path='admin/supplier' element={<Supplier/>}></Route>
 
-          <Route path='global/SingleProduct/:index' element={<SingleProduct/>}></Route>
+          <Route path='global/SingleProduct/:id' element={<SingleProduct/>}></Route>
 
           <Route path='login' element={<Login/>}></Route>
           <Route path='signup' element={<Signup/>}></Route>

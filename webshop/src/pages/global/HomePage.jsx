@@ -57,7 +57,15 @@ const filterJewelery = () => {
   const toCart = (product) => {
     // cartJSON.push(product);
     const cartLS = JSON.parse(localStorage.getItem("cart")) || [];   // JSON.parse nö "" mahavõtmine
-    cartLS.push(product);
+    
+    const found = cartLS.find(cp => cp.toode.id === product.id);    // cart product
+    if (found === undefined) {
+      cartLS.push({kogus: 1, toode: product});
+    } else {
+       found.kogus = found.kogus + 1;
+    }
+
+    // cartLS.push(product);
     localStorage.setItem("cart", JSON.stringify(cartLS));   
 
     // ostukorvi lisamine localStoragesse
@@ -98,11 +106,11 @@ const filterJewelery = () => {
           {products.map((product, index) => 
             <div key={product.id} className={styles.product}>
               <img className={styles.picture} src={product.image} alt=""></img>
+            
               <div className={styles.title}>{product.title.length > 20 ? product.title.substring(0,25) + "..." : product.title}</div>
               <div className={styles.price}>{product.price.toFixed(2)} eur</div>
               <Button1 onClick={() => toCart(product)} className="cartButton" variant="outline-info">Add to cart</Button1><br />
-        
-              <Link to={"global/SingleProduct/" + index }> Product details </Link> 
+              <Link to={"global/SingleProduct/" + product.id }> Product details </Link> 
               
               <ToastContainer 
             position="bottom-right"

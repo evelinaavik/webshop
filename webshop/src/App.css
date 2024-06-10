@@ -12,6 +12,9 @@
   font-style: normal;
 } */
 
+.productImg {
+  width: 100px;
+}
 
 .map {
   height: 300px;
