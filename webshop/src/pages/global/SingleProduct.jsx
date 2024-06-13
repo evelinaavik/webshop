@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import productsJSON from "../../data/products.json"
+// import productsJSON from "../../data/products.json"
 
 function SingleProduct() {
    const {id} = useParams();
-          // productJSON[index]                     ÜKSHAAVAL     URLis
-   const foundProduct = productsJSON.find(product => product.id === Number(id)); 
-                                                         // convert: stringist number
+   const [products, setProducts] = useState([]); 
+   const foundProduct = products.find(product => product.id === Number(id)); 
+   const urlProducts = "https://webshop-9bfa5-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+ 
+   useEffect(() => {
+     fetch(urlProducts)
+     .then(res => res.json())
+     .then(json => setProducts(json || []));
+   }, []);
+
    if (foundProduct === undefined) {
     return <div>Not Found</div>
    }

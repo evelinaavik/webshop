@@ -1,5 +1,5 @@
-import React, {useRef, useState} from 'react'
-import productsJSON from "../../data/products.json"
+import React, {useEffect, useRef, useState} from 'react'
+// import productsJSON from "../../data/products.json"
 
 function AddProduct() {
    const [message, changeMessage] = useState("Add new product");
@@ -9,17 +9,41 @@ function AddProduct() {
    const imageRef = useRef()
    const categoryRef = useRef();
    const descriptionRef = useRef();
+   const urlCategories = "https://webshop-9bfa5-default-rtdb.europe-west1.firebasedatabase.app/categories.json"
+   const [categories, setCategories] = useState([]);
+   const [products, setProducts] = useState([]);
+   const urlProducts = "https://webshop-9bfa5-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+ 
+   useEffect(() => {
+     fetch(urlProducts)
+     .then(res => res.json())
+     .then(json => setProducts(json || []));
+   }, []);
+  
+   useEffect(() => {
+     fetch(urlCategories)
+     .then(res => res.json())
+     .then(json => setCategories(json || []));
+   }, []);
 
    const add = () => {
-      if (titleRef.current.value === "") {
-         changeMessage("Add product title ");
+    const found = products.find(product => product.id === Number(idRef.current.value));       // nr ja sõna võrdlus, current value  alati sõna
+
+      if (found !== undefined) {
+         changeMessage("inserted ID already exists on another product");
          return;
         } 
-
-       if (priceRef.current.value === "") {
-        changeMessage("Add product price!")
+      
+       if (idRef.current.value === "") {
+        changeMessage("Add product ID!")
         return;
        } 
+
+       if (titleRef.current.value === "") {
+        changeMessage("Add product title")
+        return;
+       } 
+
           const newProduct = {
             title: titleRef.current.value,
             id: Number(idRef.current.value),
@@ -32,7 +56,8 @@ function AddProduct() {
               "count": 0
             } 
         }
-        productsJSON.push(newProduct)
+        products.push(newProduct);
+        fetch(urlProducts, {"method": "PUT", "body": JSON.stringify(products)});   // andmebaasi tagasi saatmine
         changeMessage("Product " + titleRef.current.value + "added !");
       }
     
@@ -42,11 +67,17 @@ function AddProduct() {
        <label>Product title</label><br/>
        <input ref={titleRef} type="text" /> <br /> 
        <label>Product id</label><br/>
-       <input ref={idRef} type="number" /> <br />      .
+       <input ref={idRef} type="number" /> <br />      
+
        <label>Product price</label><br/>
        <input ref={priceRef} type="number" /> <br />        
        <label>Product category</label><br/>
-       <input ref={categoryRef} type="text" /> <br />  
+       {/* <input ref={categoryRef} type="text" /> <br />   */}
+
+       <select ref={categoryRef}>
+        {categories.map(category => <option key={category.name}>{category.name}</option>)}
+       </select><br />
+
        <label>Product description</label><br/>
        <input ref={descriptionRef} type="text" /> <br />   
        <label>Product image</label><br/>
@@ -57,3 +88,6 @@ function AddProduct() {
 }
 
 export default AddProduct
+
+
+// kodus EditCategories
